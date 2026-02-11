@@ -21,7 +21,6 @@ fun HomeTopBar(
   searchText: String,
   modifier: Modifier = Modifier,
   onTextChange: (String) -> Unit,
-  onQrIconClick: () -> Unit,
   onSettingsClick: () -> Unit,
 ) {
   TopAppBar(
@@ -31,7 +30,6 @@ fun HomeTopBar(
         modifier = Modifier.fillMaxWidth(),
         text = searchText,
         onTextChange = onTextChange,
-        onQrIconClick = onQrIconClick,
       )
     },
     actions = {
@@ -45,7 +43,6 @@ private fun SearchField(
   text: String,
   modifier: Modifier = Modifier,
   onTextChange: (String) -> Unit,
-  onQrIconClick: () -> Unit,
 ) {
   val focusManager = LocalFocusManager.current
 
@@ -62,9 +59,6 @@ private fun SearchField(
     leadingIcon = {
       SearchIcon()
     },
-    trailingIcon = {
-      QrCodeIcon(onClick = onQrIconClick)
-    }
   )
 }
 
@@ -75,22 +69,6 @@ private fun SearchIcon(modifier: Modifier = Modifier) {
     painter = painterResource(R.drawable.outline_search_24),
     contentDescription = null,
   )
-}
-
-@Composable
-private fun QrCodeIcon(
-  modifier: Modifier = Modifier,
-  onClick: () -> Unit,
-) {
-  IconButton(
-    modifier = modifier,
-    onClick = onClick,
-  ) {
-    Icon(
-      painter = painterResource(R.drawable.outline_qr_code_scanner_24),
-      contentDescription = null,
-    )
-  }
 }
 
 @Composable

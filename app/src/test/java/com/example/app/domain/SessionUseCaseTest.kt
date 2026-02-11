@@ -8,12 +8,8 @@ import com.example.app.data.repository.login.LoginError
 import com.example.app.data.repository.login.LoginRepository
 import com.example.app.fixtures.CORRECT_CREDENTIALS
 import com.example.app.fixtures.SESSION_1
-import com.example.app.worker.BackgroundWorkerManager
 import io.mockk.coEvery
-import io.mockk.coVerify
-import io.mockk.just
 import io.mockk.mockk
-import io.mockk.runs
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
@@ -25,18 +21,15 @@ class SessionUseCaseTest {
   private val dataStore = TestDataStore()
   private val sessionStorage = SessionStorage(dataStore = dataStore)
   private val loginRepository = mockk<LoginRepository>()
-  private val workerManager = mockk<BackgroundWorkerManager>()
 
   private val sessionUseCase = SessionUseCase(
     loginRepository = loginRepository,
     sessionStorage = sessionStorage,
-    workerManager = workerManager
   )
 
   @Before
   fun setup() {
     dataStore.clear()
-    coEvery { workerManager.start() } just runs
   }
 
   // region getSession()
@@ -77,9 +70,6 @@ class SessionUseCaseTest {
     // then
     expectThat(res).isEqualTo(Either.Right(SESSION_1))
     expectThat(sessionStorage.get()).isEqualTo(SESSION_1)
-    coVerify(exactly = 1) {
-      workerManager.start()
-    }
   }
 
   @Test
@@ -96,9 +86,6 @@ class SessionUseCaseTest {
     // then
     expectThat(res).isEqualTo(Either.Left(LoginError.IncorrectCredentials))
     expectThat(sessionStorage.get()).isNull()
-    coVerify(exactly = 0) {
-      workerManager.start()
-    }
   }
 
   @Test
@@ -115,9 +102,6 @@ class SessionUseCaseTest {
     // then
     expectThat(res).isEqualTo(Either.Left(LoginError.Other(ErrorResponse.Other)))
     expectThat(sessionStorage.get()).isNull()
-    coVerify(exactly = 0) {
-      workerManager.start()
-    }
   }
   // endregion
 }

@@ -17,8 +17,6 @@ sealed interface HomeState {
     val isRefreshing: Boolean,
   ) : Searchable
 
-  data object ScanQrCode : HomeState
-
   data class Error(
     override val searchQuery: String,
     val message: String

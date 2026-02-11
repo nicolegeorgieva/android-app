@@ -7,7 +7,6 @@ import com.example.app.ui.component.ErrorUi
 import com.example.app.ui.component.Loading
 import com.example.app.ui.home.component.HomeTopBar
 import com.example.app.ui.home.component.TasksList
-import com.example.app.ui.home.qrcodescanner.QrCodeScannerUi
 import com.example.app.ui.model.Loadable
 import kotlinx.collections.immutable.ImmutableList
 
@@ -34,9 +33,6 @@ fun HomeUi(
           onTextChange = {
             onEvent(HomeEvent.SearchTextChange(it))
           },
-          onQrIconClick = {
-            onEvent(HomeEvent.ScanQrCodeClick)
-          },
           onSettingsClick = {
             onEvent(HomeEvent.SettingsClick)
           },
@@ -57,15 +53,6 @@ fun HomeUi(
 
           Loadable.Loading -> Loading(paddingValues = paddingValues)
         }
-
-        is HomeState.ScanQrCode -> QrCodeScannerUi(
-          onQrCodeScanned = {
-            onEvent(HomeEvent.ScanQrCode(it))
-          },
-          onQrCodeScannerClosed = {
-            onEvent(HomeEvent.CloseQrCodeScanner)
-          }
-        )
 
         is HomeState.Error -> ErrorUi(
           message = uiState.message,

@@ -4,7 +4,6 @@ import com.example.app.data.datasource.task.TaskLocalDataSource
 import com.example.app.data.datastore.SessionStorage
 import com.example.app.data.datastore.TestDataStore
 import com.example.app.fixtures.SESSION_1
-import com.example.app.worker.BackgroundWorkerManager
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.just
@@ -20,11 +19,9 @@ class LogoutUseCaseTest {
   private val dataStore = TestDataStore()
   private val sessionStorage = SessionStorage(dataStore = dataStore)
   private val taskDataSource = mockk<TaskLocalDataSource>()
-  private val workerManager = mockk<BackgroundWorkerManager>()
   private val logoutUseCase = LogoutUseCase(
     sessionStorage = sessionStorage,
     taskDataSource = taskDataSource,
-    workerManager = workerManager
   )
 
   @Before
@@ -36,7 +33,6 @@ class LogoutUseCaseTest {
   fun logout() = runTest {
     // given
     sessionStorage.store(SESSION_1)
-    coEvery { workerManager.cancel() } just runs
     coEvery { taskDataSource.deleteTasks() } just runs
     // when
     logoutUseCase.logout()
@@ -44,7 +40,6 @@ class LogoutUseCaseTest {
     expectThat(sessionStorage.get()).isNull()
     coVerify(exactly = 1) {
       taskDataSource.deleteTasks()
-      workerManager.cancel()
     }
   }
 }

@@ -21,7 +21,6 @@ class HomeViewModel @Inject constructor(
   private val homeUiMapper: HomeUiMapper,
   private val navigator: Navigator,
 ) : ComposeViewModel<HomeState, HomeEvent>() {
-  private var qrCodeScannerVisible by mutableStateOf(false)
   private var searchQuery by mutableStateOf("")
   private var tasksRefreshing by mutableStateOf(false)
 
@@ -29,10 +28,6 @@ class HomeViewModel @Inject constructor(
   override fun uiState(): HomeState {
     val tasksRes by remember { taskRepository.getTasks(viewModelScope) }
       .collectAsState(initial = null)
-
-    if (qrCodeScannerVisible) {
-      return HomeState.ScanQrCode
-    }
 
     return homeUiMapper.map(
       searchQuery = searchQuery,
@@ -44,30 +39,14 @@ class HomeViewModel @Inject constructor(
   override fun onEvent(event: HomeEvent) {
     when (event) {
       is HomeEvent.SearchTextChange -> handleSearchTextChange(event)
-      HomeEvent.ScanQrCodeClick -> scanQrCodeClick()
-      is HomeEvent.ScanQrCode -> handleScanQrCode(event)
       HomeEvent.SettingsClick -> handleSettingsClick()
       HomeEvent.RefreshTasks -> handleRefreshTasks()
       HomeEvent.RetryClick -> handleRetryClick()
-      HomeEvent.CloseQrCodeScanner -> handleCloseQrCodeScanner()
     }
   }
 
   private fun handleSearchTextChange(event: HomeEvent.SearchTextChange) {
     searchQuery = event.text
-  }
-
-  private fun scanQrCodeClick() {
-    qrCodeScannerVisible = true
-  }
-
-  private fun handleScanQrCode(event: HomeEvent.ScanQrCode) {
-    qrCodeScannerVisible = false
-    searchQuery = event.scannedText
-  }
-
-  private fun handleCloseQrCodeScanner() {
-    qrCodeScannerVisible = false
   }
 
   private fun handleRefreshTasks() {
