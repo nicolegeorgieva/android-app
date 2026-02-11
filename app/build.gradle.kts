@@ -52,14 +52,11 @@ android {
 }
 
 dependencies {
-  implementation(libs.androidx.core.ktx)
-  implementation(libs.androidx.lifecycle.runtime.ktx)
-  implementation(libs.androidx.activity.compose)
+  implementation(libs.bundles.android.x)
+
   implementation(platform(libs.androidx.compose.bom))
-  implementation(libs.compose.runtime)
+
   implementation(libs.compose.viewmodel)
-  implementation(libs.androidx.ui)
-  implementation(libs.androidx.ui.graphics)
   implementation(libs.androidx.ui.tooling.preview)
   implementation(libs.androidx.material3)
   implementation(libs.kotlinx.collections.immutable)

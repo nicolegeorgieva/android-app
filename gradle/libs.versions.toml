@@ -90,6 +90,16 @@ strikt-arrow = { module = "io.strikt:strikt-arrow", version.ref = "strikt" }
 test-parameter-injector = { module = "com.google.testparameterinjector:test-parameter-injector", version = "1.20" }
 turbine = { module = "app.cash.turbine:turbine", version = "1.2.1" }
 
+[bundles]
+android-x = [
+    "androidx-core-ktx",
+    "androidx-ui",
+    "androidx-ui-graphics",
+    "androidx-lifecycle-runtime-ktx",
+    "androidx-activity-compose",
+    "compose-runtime",
+]
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
