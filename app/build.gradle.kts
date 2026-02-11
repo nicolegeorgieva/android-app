@@ -53,67 +53,35 @@ android {
 
 dependencies {
   implementation(libs.bundles.android.x)
-
   implementation(platform(libs.androidx.compose.bom))
-
   implementation(libs.compose.viewmodel)
-  implementation(libs.androidx.ui.tooling.preview)
-  implementation(libs.androidx.material3)
-  implementation(libs.kotlinx.collections.immutable)
+  implementation(libs.bundles.navigation)
   implementation(libs.arrow.core)
-  implementation(libs.coil)
-  implementation(libs.coil.http)
   implementation(libs.dataStore)
   implementation(libs.accompanist.permissions)
-
-  // region Navigation
-  implementation(libs.androidx.navigation3.ui)
-  implementation(libs.androidx.navigation3.runtime)
-  implementation(libs.androidx.lifecycle.viewmodel.navigation3)
-  // endregion
+  implementation(libs.bundles.kotlin.x)
+  implementation(libs.bundles.ktor)
+  implementation(libs.bundles.coil)
 
   // region Hilt
-  implementation(libs.hilt)
-  implementation(libs.hilt.worker)
+  implementation(libs.bundles.hilt)
   ksp(libs.hilt.compiler)
-  implementation(libs.hilt.navigation.compose)
   // endregion
 
   // region Room
-  implementation(libs.room.runtime)
+  implementation(libs.bundles.room)
   ksp(libs.room.compiler)
-  implementation(libs.room.ktx)
   // endregion
 
-  // region KotlinX Serialization
-  implementation(libs.kotlinx.serialization.json)
-  // endregion
-
-  // region Ktor
-  implementation(libs.ktor.client.okhttp)
-  implementation(libs.ktor.content.negotiation)
-  implementation(libs.ktor.serialization)
-  implementation(libs.ktor.client.core)
-  implementation(libs.ktor.client.serialization)
-  implementation(libs.ktor.logging)
-  implementation(libs.ktor.auth.plugin)
-  // endregion
-
-  androidTestImplementation(libs.androidx.espresso.core)
-  androidTestImplementation(libs.androidx.junit)
-  androidTestImplementation(libs.androidx.ui.test.junit4)
+  // region UI testing
+  androidTestImplementation(libs.bundles.ui.testing)
   androidTestImplementation(platform(libs.androidx.compose.bom))
   debugImplementation(libs.androidx.ui.test.manifest)
+  // endregion
+
   debugImplementation(libs.androidx.ui.tooling)
 
-  // region tests
-  testImplementation(libs.kotlin.test)
-  testImplementation(libs.junit)
-  testImplementation(libs.kotlinx.coroutines.test)
-  testImplementation(libs.mockk)
-  testImplementation(libs.strikt.arrow)
-  testImplementation(libs.strikt.core)
-  testImplementation(libs.turbine)
-  testImplementation(libs.test.parameter.injector)
+  // region Unit testing
+  testImplementation(libs.bundles.ui.testing)
   // endregion
 }

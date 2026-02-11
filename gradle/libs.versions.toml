@@ -81,7 +81,7 @@ ktor-auth-plugin = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
 # Accompanist
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version = "0.34.0" }
 
-# Test
+# Testing
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 mockk = { module = "io.mockk:mockk", version = "1.14.5" }
@@ -98,6 +98,54 @@ android-x = [
     "androidx-lifecycle-runtime-ktx",
     "androidx-activity-compose",
     "compose-runtime",
+    "androidx-ui-tooling-preview",
+    "androidx-material3",
+]
+kotlin-x = [
+    "kotlinx-serialization-json",
+    "kotlinx-collections-immutable",
+]
+coil = [
+    "coil",
+    "coil-http",
+]
+navigation = [
+    "androidx-navigation3-ui",
+    "androidx-navigation3-runtime",
+    "androidx-lifecycle-viewmodel-navigation3",
+]
+hilt = [
+    "hilt",
+    "hilt-worker",
+    "hilt-navigation-compose",
+]
+room = [
+    "room-runtime",
+    "room-ktx",
+]
+ktor = [
+    "ktor-client-okhttp",
+    "ktor-content-negotiation",
+    "ktor-serialization",
+    "ktor-client-core",
+    "ktor-client-serialization",
+    "ktor-logging",
+    "ktor-auth-plugin",
+]
+ui-testing = [
+    "androidx-espresso-core",
+    "androidx-junit",
+    "androidx-ui-test-junit4",
+]
+unit-testing = [
+    "kotlin-test",
+    "junit",
+    "kotlinx-coroutines-test",
+    "mockk",
+    "strikt-arrow",
+    "strikt-core",
+    "turbine",
+    "test-parameter-injector",
 ]
 
 [plugins]
