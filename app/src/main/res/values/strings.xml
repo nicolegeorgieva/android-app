@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MyApp</string>
+    <string name="error_message_no_internet">No internet connection</string>
+    <string name="error_message_other">Oops. An error occurred.</string>
+    <string name="error_retry">Retry</string>
+    <!--    region login -->
+    <string name="login_title">Welcome!</string>
+    <string name="login_error_blank_username">Username should not be empty and should contain some characters except whitespace characters</string>
+    <string name="login_error_empty_password">Password should not be empty</string>
+    <string name="login_error_incorrect_credentials">Incorrect credentials</string>
+    <string name="login_username_field_title">Username</string>
+    <string name="login_password_field_title">Password</string>
+    <string name="login_cta_button">Log in</string>
+    <!--    endregion -->
+    <!--    region home -->
+    <string name="home_allow_camera_message">You should allow camera to proceed with QR code scanning</string>
+    <string name="home_allow_camera_button">Allow camera</string>
+    <!--    endregion -->
+    <!--    region settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_logout_button">Log out</string>
+    <!--    endregion -->
+</resources>
