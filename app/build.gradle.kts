@@ -67,12 +67,7 @@ dependencies {
   implementation(libs.coil)
   implementation(libs.coil.http)
   implementation(libs.dataStore)
-  implementation(libs.barcode.scanning)
   implementation(libs.accompanist.permissions)
-  implementation(libs.camera.core)
-  implementation(libs.camera.camera2)
-  implementation(libs.camera.lifecycle)
-  implementation(libs.camera.view)
 
   // region Navigation
   implementation(libs.androidx.navigation3.ui)
@@ -85,10 +80,6 @@ dependencies {
   implementation(libs.hilt.worker)
   ksp(libs.hilt.compiler)
   implementation(libs.hilt.navigation.compose)
-  // endregion
-
-  // region Worker
-  implementation(libs.android.workmanager)
   // endregion
 
   // region Room
