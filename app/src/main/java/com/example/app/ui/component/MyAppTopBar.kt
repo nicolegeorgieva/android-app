@@ -1,5 +1,6 @@
 package com.example.app.ui.component
 
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Icon
@@ -14,6 +15,7 @@ fun MyAppTopBar(
   title: String,
   modifier: Modifier = Modifier,
   onBackClick: (() -> Unit)? = null,
+  actions: @Composable (RowScope.() -> Unit) = {}
 ) {
   TopAppBar(
     modifier = modifier,
@@ -24,7 +26,8 @@ fun MyAppTopBar(
       if (onBackClick != null) {
         BackButton(onBackClick = onBackClick)
       }
-    }
+    },
+    actions = actions,
   )
 }
 
