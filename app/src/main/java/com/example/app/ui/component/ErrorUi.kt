@@ -12,13 +12,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.app.R
+import com.example.app.utils.MyAppScreenPreview
 
 @Composable
 fun ErrorUi(
   message: String,
   paddingValues: PaddingValues,
+  retryButtonLoading: Boolean,
   modifier: Modifier = Modifier,
   onRetry: () -> Unit,
 ) {
@@ -34,7 +37,32 @@ fun ErrorUi(
     Spacer(Modifier.height(24.dp))
     CtaButton(
       text = stringResource(R.string.error_retry),
+      loading = retryButtonLoading,
       onClick = onRetry,
     )
+  }
+}
+
+@Preview
+@Composable
+private fun ErrorUiNormalPreview() {
+  MyAppScreenPreview {
+    ErrorUi(
+      message = "Oops. An error occurred.",
+      paddingValues = PaddingValues(),
+      retryButtonLoading = false,
+    ) { }
+  }
+}
+
+@Preview
+@Composable
+private fun ErrorUiLoadingPreview() {
+  MyAppScreenPreview {
+    ErrorUi(
+      message = "Oops. An error occurred.",
+      paddingValues = PaddingValues(),
+      retryButtonLoading = true,
+    ) { }
   }
 }

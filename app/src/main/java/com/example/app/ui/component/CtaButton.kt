@@ -32,21 +32,21 @@ fun CtaButton(
 
 @Preview
 @Composable
-private fun CtaButtonLoadingPreview() {
+private fun CtaButtonNormalPreview() {
   MyAppComponentPreview {
     CtaButton(
       text = "Log in",
-      loading = true,
     ) {}
   }
 }
 
 @Preview
 @Composable
-private fun CtaButtonNormalPreview() {
+private fun CtaButtonLoadingPreview() {
   MyAppComponentPreview {
     CtaButton(
-      text = "Log in"
+      text = "Log in",
+      loading = true,
     ) {}
   }
 }

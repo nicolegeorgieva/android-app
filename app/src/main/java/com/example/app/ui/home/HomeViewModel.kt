@@ -23,6 +23,7 @@ class HomeViewModel @Inject constructor(
 ) : ComposeViewModel<HomeState, HomeEvent>() {
   private var searchQuery by mutableStateOf("")
   private var tasksRefreshing by mutableStateOf(false)
+  private var retryButtonLoading by mutableStateOf(false)
 
   @Composable
   override fun uiState(): HomeState {
@@ -33,6 +34,7 @@ class HomeViewModel @Inject constructor(
       searchQuery = searchQuery,
       tasksResponse = tasksRes,
       isRefreshing = tasksRefreshing,
+      retryButtonLoading = retryButtonLoading
     )
   }
 

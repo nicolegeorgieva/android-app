@@ -19,12 +19,14 @@ class HomeUiMapper @Inject constructor(
     searchQuery: String,
     tasksResponse: Either<ErrorResponse, List<Task>>?,
     isRefreshing: Boolean,
+    retryButtonLoading: Boolean,
   ): HomeState {
     return tasksResponse?.fold(
       ifLeft = { error ->
         HomeState.Error(
           message = errorUiMapper.map(error),
           searchQuery = searchQuery,
+          retryButtonLoading = retryButtonLoading,
         )
       },
       ifRight = { tasks ->

@@ -19,7 +19,8 @@ sealed interface HomeState {
 
   data class Error(
     override val searchQuery: String,
-    val message: String
+    val message: String,
+    val retryButtonLoading: Boolean,
   ) : Searchable
 }
 
