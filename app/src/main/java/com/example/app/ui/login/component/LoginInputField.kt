@@ -13,7 +13,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.app.R
+import com.example.app.utils.MyAppComponentPreview
 
 @Immutable
 sealed interface LoginInputType {
@@ -91,4 +93,74 @@ private fun LoginInputFieldTitle(
       }
     )
   )
+}
+
+@Preview
+@Composable
+private fun LoginUsernameFieldPreview() {
+  MyAppComponentPreview {
+    LoginInputField(
+      input = LoginInputType.Username(
+        value = "",
+        error = null,
+      ),
+      onValueChange = {}
+    )
+  }
+}
+
+@Preview
+@Composable
+private fun LoginUsernameFieldFilledPreview() {
+  MyAppComponentPreview {
+    LoginInputField(
+      input = LoginInputType.Username(
+        value = "Emily",
+        error = null,
+      ),
+      onValueChange = {}
+    )
+  }
+}
+
+@Preview
+@Composable
+private fun LoginUsernameFieldErrorPreview() {
+  MyAppComponentPreview {
+    LoginInputField(
+      input = LoginInputType.Username(
+        value = "",
+        error = stringResource(R.string.login_error_blank_username),
+      ),
+      onValueChange = {}
+    )
+  }
+}
+
+@Preview
+@Composable
+private fun LoginPasswordFieldPreview() {
+  MyAppComponentPreview {
+    LoginInputField(
+      input = LoginInputType.Password(
+        value = "",
+        error = null,
+      ),
+      onValueChange = {}
+    )
+  }
+}
+
+@Preview
+@Composable
+private fun LoginPasswordFieldErrorPreview() {
+  MyAppComponentPreview {
+    LoginInputField(
+      input = LoginInputType.Username(
+        value = "",
+        error = stringResource(R.string.login_error_empty_password),
+      ),
+      onValueChange = {}
+    )
+  }
 }

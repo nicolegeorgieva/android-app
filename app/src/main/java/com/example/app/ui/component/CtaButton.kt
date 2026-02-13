@@ -6,8 +6,10 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.app.R
 import com.example.app.utils.MyAppComponentPreview
 
 @Composable
@@ -35,7 +37,7 @@ fun CtaButton(
 private fun CtaButtonNormalPreview() {
   MyAppComponentPreview {
     CtaButton(
-      text = "Log in",
+      text = stringResource(R.string.login_cta_button),
       onClick = {},
     )
   }
@@ -46,7 +48,7 @@ private fun CtaButtonNormalPreview() {
 private fun CtaButtonLoadingPreview() {
   MyAppComponentPreview {
     CtaButton(
-      text = "Log in",
+      text = stringResource(R.string.login_cta_button),
       loading = true,
       onClick = {},
     )

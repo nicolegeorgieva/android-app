@@ -45,10 +45,10 @@ fun ErrorUi(
 
 @Preview
 @Composable
-private fun ErrorUiNormalPreview() {
+private fun ErrorUiNoInternetNormalPreview() {
   MyAppScreenPreview {
     ErrorUi(
-      message = "Oops. An error occurred.",
+      message = stringResource(R.string.error_message_no_internet),
       paddingValues = PaddingValues(),
       retryButtonLoading = false,
     ) { }
@@ -57,10 +57,10 @@ private fun ErrorUiNormalPreview() {
 
 @Preview
 @Composable
-private fun ErrorUiLoadingPreview() {
+private fun ErrorUiOtherLoadingPreview() {
   MyAppScreenPreview {
     ErrorUi(
-      message = "Oops. An error occurred.",
+      message = stringResource(R.string.error_message_other),
       paddingValues = PaddingValues(),
       retryButtonLoading = true,
     ) { }
