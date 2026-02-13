@@ -36,7 +36,8 @@ private fun CtaButtonNormalPreview() {
   MyAppComponentPreview {
     CtaButton(
       text = "Log in",
-    ) {}
+      onClick = {},
+    )
   }
 }
 
@@ -47,6 +48,7 @@ private fun CtaButtonLoadingPreview() {
     CtaButton(
       text = "Log in",
       loading = true,
-    ) {}
+      onClick = {},
+    )
   }
 }
