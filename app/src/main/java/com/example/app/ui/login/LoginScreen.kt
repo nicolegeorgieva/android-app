@@ -13,12 +13,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.app.R
 import com.example.app.ui.component.CtaButton
 import com.example.app.ui.login.component.LoginInputField
 import com.example.app.ui.login.component.LoginInputType
+import com.example.app.utils.MyAppScreenPreview
 
 @Composable
 fun LoginScreen() {
@@ -87,5 +89,59 @@ fun LoginUi(
         )
       }
     }
+  }
+}
+
+@Preview
+@Composable
+private fun LoginUiPreview() {
+  MyAppScreenPreview {
+    LoginUi(
+      uiState = LoginState(
+        username = "Emma",
+        password = "123456",
+        usernameError = null,
+        passwordError = null,
+        loginButtonLoading = true,
+        serverErrorMessage = null,
+      ),
+      onEvent = {}
+    )
+  }
+}
+
+@Preview
+@Composable
+private fun LoginUiPasswordErrorPreview() {
+  MyAppScreenPreview {
+    LoginUi(
+      uiState = LoginState(
+        username = "Emma",
+        password = "",
+        usernameError = null,
+        passwordError = stringResource(R.string.login_error_empty_password),
+        loginButtonLoading = false,
+        serverErrorMessage = null,
+      ),
+      onEvent = {}
+    )
+  }
+}
+
+@Preview
+@Composable
+private fun LoginUiServerErrorPreview() {
+  MyAppScreenPreview {
+    LoginUi(
+      uiState = LoginState(
+        username = "Emma",
+        password = "123456",
+        usernameError = null,
+        passwordError = null,
+        loginButtonLoading = false,
+        serverErrorMessage = stringResource(R.string.login_error_incorrect_credentials),
+      ),
+      onEvent = {}
+    )
   }
 }

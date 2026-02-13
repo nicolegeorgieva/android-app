@@ -8,11 +8,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.app.R
 import com.example.app.ui.component.CtaButton
 import com.example.app.ui.component.MyAppTopBar
+import com.example.app.utils.MyAppScreenPreview
 
 @Composable
 fun SettingsScreen() {
@@ -53,5 +55,31 @@ fun SettingsUi(
         }
       )
     }
+  }
+}
+
+@Preview
+@Composable
+private fun SettingsUiPreview() {
+  MyAppScreenPreview {
+    SettingsUi(
+      uiState = SettingsState(
+        logoutButtonLoading = false,
+      ),
+      onEvent = {}
+    )
+  }
+}
+
+@Preview
+@Composable
+private fun SettingsUiLogoutLoadingPreview() {
+  MyAppScreenPreview {
+    SettingsUi(
+      uiState = SettingsState(
+        logoutButtonLoading = true,
+      ),
+      onEvent = {}
+    )
   }
 }
