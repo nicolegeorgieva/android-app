@@ -8,6 +8,8 @@ import androidx.room.Room
 import com.example.app.MainEventBus
 import com.example.app.data.database.MyAppDatabase
 import com.example.app.data.database.task.TaskDao
+import com.example.app.data.datasource.login.FakeLoginDataSource
+import com.example.app.data.datasource.login.LoginDataSource
 import com.example.app.data.datastore.SessionStorage
 import com.example.app.domain.LogoutUseCase
 import com.example.app.utils.Logger
@@ -136,6 +138,11 @@ object AppModule {
     database: MyAppDatabase,
   ): TaskDao {
     return database.taskDao()
+  }
+
+  @Provides
+  fun bindLoginDataSource(): LoginDataSource {
+    return FakeLoginDataSource()
   }
 }
 
