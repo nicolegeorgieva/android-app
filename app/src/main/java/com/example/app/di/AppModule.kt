@@ -141,7 +141,7 @@ object AppModule {
   }
 
   @Provides
-  fun bindLoginDataSource(): LoginDataSource {
+  fun provideLoginDataSource(): LoginDataSource {
     return FakeLoginDataSource()
   }
 }
