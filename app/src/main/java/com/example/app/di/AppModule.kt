@@ -10,6 +10,8 @@ import com.example.app.data.database.MyAppDatabase
 import com.example.app.data.database.task.TaskDao
 import com.example.app.data.datasource.login.FakeLoginDataSource
 import com.example.app.data.datasource.login.LoginDataSource
+import com.example.app.data.datasource.task.FakeTaskRemoteDataSource
+import com.example.app.data.datasource.task.TaskRemoteDataSource
 import com.example.app.data.datastore.SessionStorage
 import com.example.app.domain.LogoutUseCase
 import com.example.app.utils.Logger
@@ -143,6 +145,15 @@ object AppModule {
   @Provides
   fun provideLoginDataSource(): LoginDataSource {
     return FakeLoginDataSource()
+  }
+
+  @Provides
+  fun provideTaskRemoteDataSource(
+    sessionStorage: SessionStorage,
+  ): TaskRemoteDataSource {
+    return FakeTaskRemoteDataSource(
+      sessionStorage = sessionStorage,
+    )
   }
 }
 
