@@ -6,6 +6,7 @@ plugins {
   alias(libs.plugins.dagger.hilt)
   alias(libs.plugins.room)
   alias(libs.plugins.kotlinx.serialization)
+  alias(libs.plugins.paparazzi)
 }
 
 android {
@@ -77,6 +78,10 @@ dependencies {
   androidTestImplementation(libs.bundles.ui.testing)
   androidTestImplementation(platform(libs.androidx.compose.bom))
   testImplementation(libs.bundles.ui.testing)
+  // endregion
+
+  // region Screenshot testing
+  testImplementation(libs.paparazzi)
   // endregion
 
   debugImplementation(libs.androidx.ui.test.manifest)

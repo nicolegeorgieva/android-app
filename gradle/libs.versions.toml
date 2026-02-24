@@ -17,6 +17,7 @@ room = "2.8.4"
 ksp = "2.2.10-2.0.2"
 ktor = "3.2.3"
 coil = "3.3.0"
+paparazzi = "2.0.0-alpha04"
 
 [libraries]
 # AndroidX
@@ -88,6 +89,7 @@ strikt-core = { module = "io.strikt:strikt-core", version.ref = "strikt" }
 strikt-arrow = { module = "io.strikt:strikt-arrow", version.ref = "strikt" }
 test-parameter-injector = { module = "com.google.testparameterinjector:test-parameter-injector", version = "1.20" }
 turbine = { module = "app.cash.turbine:turbine", version = "1.2.1" }
+paparazzi = { module = "app.cash.paparazzi:paparazzi", version.ref = "paparazzi" }
 
 [bundles]
 android-x = [
@@ -154,3 +156,4 @@ dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 room = { id = "androidx.room", version.ref = "room" }
 devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+paparazzi = { id = "app.cash.paparazzi", version.ref = "paparazzi" }
