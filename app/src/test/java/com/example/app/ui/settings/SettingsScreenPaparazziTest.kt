@@ -37,5 +37,32 @@ class SettingsScreenPaparazziTest {
       }
     }
   }
-}
 
+  @Test
+  fun settings_logout_loading_light() {
+    paparazzi.snapshot {
+      MyAppTheme(darkTheme = false, dynamicColor = false) {
+        SettingsUi(
+          uiState = SettingsState(
+            logoutButtonLoading = true,
+          ),
+          onEvent = {},
+        )
+      }
+    }
+  }
+
+  @Test
+  fun settings_logout_loading_dark() {
+    paparazzi.snapshot {
+      MyAppTheme(darkTheme = true, dynamicColor = false) {
+        SettingsUi(
+          uiState = SettingsState(
+            logoutButtonLoading = true,
+          ),
+          onEvent = {},
+        )
+      }
+    }
+  }
+}

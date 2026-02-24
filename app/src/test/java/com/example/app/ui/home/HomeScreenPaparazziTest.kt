@@ -18,7 +18,7 @@ class HomeScreenPaparazziTest {
       MyAppTheme(darkTheme = false, dynamicColor = false) {
         HomeUi(
           uiState = HomeState.Content(
-            searchQuery = "Task",
+            searchQuery = "",
             tasks = Loadable.Content(
               persistentListOf(
                 TaskUi(
@@ -49,7 +49,7 @@ class HomeScreenPaparazziTest {
       MyAppTheme(darkTheme = true, dynamicColor = false) {
         HomeUi(
           uiState = HomeState.Content(
-            searchQuery = "Task",
+            searchQuery = "",
             tasks = Loadable.Content(
               persistentListOf(
                 TaskUi(
@@ -73,5 +73,36 @@ class HomeScreenPaparazziTest {
       }
     }
   }
-}
 
+  @Test
+  fun home_loading_light() {
+    paparazzi.snapshot {
+      MyAppTheme(darkTheme = false, dynamicColor = false) {
+        HomeUi(
+          uiState = HomeState.Content(
+            searchQuery = "",
+            tasks = Loadable.Loading,
+            isRefreshing = false,
+          ),
+          onEvent = {},
+        )
+      }
+    }
+  }
+
+  @Test
+  fun home_loading_dark() {
+    paparazzi.snapshot {
+      MyAppTheme(darkTheme = true, dynamicColor = false) {
+        HomeUi(
+          uiState = HomeState.Content(
+            searchQuery = "",
+            tasks = Loadable.Loading,
+            isRefreshing = false,
+          ),
+          onEvent = {},
+        )
+      }
+    }
+  }
+}
