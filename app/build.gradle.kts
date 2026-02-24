@@ -76,12 +76,13 @@ dependencies {
   // region UI testing
   androidTestImplementation(libs.bundles.ui.testing)
   androidTestImplementation(platform(libs.androidx.compose.bom))
+  testImplementation(libs.bundles.ui.testing)
   // endregion
 
   debugImplementation(libs.androidx.ui.test.manifest)
   debugImplementation(libs.androidx.ui.tooling)
 
   // region Unit testing
-  testImplementation(libs.bundles.ui.testing)
+  testImplementation(libs.bundles.unit.testing)
   // endregion
 }
