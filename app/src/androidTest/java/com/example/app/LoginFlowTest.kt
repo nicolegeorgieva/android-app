@@ -39,4 +39,26 @@ class LoginFlowTest {
       assertTasksListVisible()
     }
   }
+
+  @Test
+  fun login_with_invalid_credentials_shows_error() {
+    loginRobot(composeRule) {
+      enterUsername("Test")
+      enterPassword("123456")
+      tapLogin()
+      assertErrorShown("Incorrect credentials")
+    }
+  }
+
+  @Test
+  fun login_error_removed_on_typing() {
+    loginRobot(composeRule) {
+      enterUsername("Test")
+      enterPassword("123456")
+      tapLogin()
+      assertErrorShown("Incorrect credentials")
+      enterPassword("12345")
+      assertNoErrorShown()
+    }
+  }
 }

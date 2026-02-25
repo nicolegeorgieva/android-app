@@ -2,6 +2,7 @@ package com.example.app.ui.login
 
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsNotDisplayed
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.ComposeTestRule
 import androidx.compose.ui.test.onNodeWithTag
@@ -37,6 +38,11 @@ class LoginRobot(private val rule: ComposeTestRule) {
     errorText()
       .assertIsDisplayed()
       .assertTextEquals(message)
+    return this
+  }
+
+  fun assertNoErrorShown(): LoginRobot {
+    errorText().assertIsNotDisplayed()
     return this
   }
 }
