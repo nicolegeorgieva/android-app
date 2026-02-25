@@ -57,6 +57,7 @@ arrow-core = { module = "io.arrow-kt:arrow-core", version = "2.1.2" }
 hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.2.0" }
+hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 
 # DataStore
 dataStore = { module = "androidx.datastore:datastore-preferences", version = "1.2.0" }

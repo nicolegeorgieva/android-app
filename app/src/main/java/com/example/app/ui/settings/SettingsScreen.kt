@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,10 +34,11 @@ fun SettingsUi(
   Scaffold(
     topBar = {
       MyAppTopBar(
+        modifier = Modifier.testTag("settings_top_bar"),
         title = stringResource(R.string.settings_title),
         onBackClick = {
           onEvent(SettingsEvent.BackClick)
-        }
+        },
       )
     }
   ) { paddingValues ->
@@ -47,7 +49,9 @@ fun SettingsUi(
         .padding(16.dp)
     ) {
       CtaButton(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+          .fillMaxWidth()
+          .testTag("settings_logout_button"),
         text = stringResource(R.string.settings_logout_button),
         loading = uiState.logoutButtonLoading,
         onClick = {

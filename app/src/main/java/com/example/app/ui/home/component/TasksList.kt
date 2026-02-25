@@ -37,12 +37,12 @@ fun TasksList(
   onRefresh: () -> Unit,
 ) {
   PullToRefreshBox(
+    modifier = modifier,
     isRefreshing = isRefreshing,
     onRefresh = onRefresh,
-    modifier = modifier
   ) {
     LazyColumn(
-      modifier = modifier
+      modifier = Modifier
         .padding(paddingValues)
         .padding(16.dp)
     ) {

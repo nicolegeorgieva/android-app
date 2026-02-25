@@ -2,6 +2,8 @@ package com.example.app.ui.home
 
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.app.ui.component.ErrorUi
 import com.example.app.ui.component.Loading
@@ -29,6 +31,7 @@ fun HomeUi(
     topBar = {
       if (uiState is HomeState.Searchable) {
         HomeTopBar(
+          modifier = Modifier.testTag("home_top_bar"),
           searchText = uiState.searchQuery,
           onTextChange = {
             onEvent(HomeEvent.SearchTextChange(it))
@@ -43,12 +46,13 @@ fun HomeUi(
       when (uiState) {
         is HomeState.Content -> when (uiState.tasks) {
           is Loadable.Content<ImmutableList<TaskUi>> -> TasksList(
+            modifier = Modifier.testTag("home_tasks_list"),
             tasks = uiState.tasks.value,
             isRefreshing = uiState.isRefreshing,
             paddingValues = paddingValues,
             onRefresh = {
               onEvent(HomeEvent.RefreshTasks)
-            }
+            },
           )
 
           Loadable.Loading -> Loading(paddingValues = paddingValues)

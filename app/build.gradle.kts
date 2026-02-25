@@ -20,7 +20,7 @@ android {
     versionCode = 1
     versionName = "1.0"
 
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner = "com.example.app.HiltTestRunner"
   }
 
   buildTypes {
@@ -77,6 +77,8 @@ dependencies {
   // region UI testing
   androidTestImplementation(libs.bundles.ui.testing)
   androidTestImplementation(platform(libs.androidx.compose.bom))
+  androidTestImplementation(libs.hilt.android.testing)
+  kspAndroidTest(libs.hilt.compiler)
   testImplementation(libs.bundles.ui.testing)
   // endregion
 
