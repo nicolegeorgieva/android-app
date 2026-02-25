@@ -1,4 +1,4 @@
-package com.example.app.ui.home
+package com.example.app.robot.home
 
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assertIsDisplayed

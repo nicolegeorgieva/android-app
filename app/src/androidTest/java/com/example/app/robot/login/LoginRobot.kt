@@ -1,4 +1,4 @@
-package com.example.app.ui.login
+package com.example.app.robot.login
 
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assertIsDisplayed
@@ -43,6 +43,13 @@ class LoginRobot(private val rule: ComposeTestRule) {
 
   fun assertNoErrorShown(): LoginRobot {
     errorText().assertIsNotDisplayed()
+    return this
+  }
+
+  fun assertVisible(): LoginRobot {
+    usernameField().assertIsDisplayed()
+    passwordField().assertIsDisplayed()
+    loginButton().assertIsDisplayed()
     return this
   }
 }
