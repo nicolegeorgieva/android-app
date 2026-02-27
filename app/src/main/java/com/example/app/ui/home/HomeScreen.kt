@@ -4,13 +4,16 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.app.ui.component.ErrorUi
 import com.example.app.ui.component.Loading
 import com.example.app.ui.home.component.HomeTopBar
 import com.example.app.ui.home.component.TasksList
 import com.example.app.ui.model.Loadable
+import com.example.app.utils.MyAppScreenPreview
 import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 
 @Composable
 fun HomeScreen() {
@@ -69,4 +72,28 @@ fun HomeUi(
       }
     }
   )
+}
+
+@Preview
+@Composable
+private fun HomeUiWithSearchPreview() {
+  MyAppScreenPreview {
+    HomeUi(
+      uiState = HomeState.Content(
+        searchQuery = "Buy",
+        tasks = Loadable.Content(
+          persistentListOf(
+            TaskUi(
+              id = "2",
+              title = "Buy groceries",
+              description = "",
+              color = null,
+            )
+          )
+        ),
+        isRefreshing = false,
+      ),
+      onEvent = {}
+    )
+  }
 }
