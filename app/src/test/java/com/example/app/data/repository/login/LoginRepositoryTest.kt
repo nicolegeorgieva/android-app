@@ -5,7 +5,6 @@ import com.example.app.data.ErrorMapper
 import com.example.app.data.ErrorResponse
 import com.example.app.data.datasource.login.IncorrectCredentialsException
 import com.example.app.data.datasource.login.LoginDataSource
-import com.example.app.data.datasource.login.OauthDto
 import com.example.app.data.datasource.login.SessionDto
 import com.example.app.domain.model.Session
 import com.example.app.fixtures.ACCESS_TOKEN_1
@@ -34,7 +33,7 @@ class LoginRepositoryTest {
         password = CORRECT_CREDENTIALS.password,
       )
     } returns Either.Right(
-      SessionDto(oauth = OauthDto(accessToken = ACCESS_TOKEN_1))
+      SessionDto(accessToken = ACCESS_TOKEN_1)
     )
 
     // when

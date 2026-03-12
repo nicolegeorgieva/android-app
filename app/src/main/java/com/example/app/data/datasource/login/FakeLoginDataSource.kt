@@ -12,9 +12,7 @@ class FakeLoginDataSource @Inject constructor() : LoginDataSource {
   ): Either<Throwable, SessionDto> {
     return if (username == "Test" && password == "123") {
       SessionDto(
-        oauth = OauthDto(
-          accessToken = "fake-access-token",
-        ),
+        accessToken = "fake-access-token",
       ).right()
     } else {
       IncorrectCredentialsException().left()
