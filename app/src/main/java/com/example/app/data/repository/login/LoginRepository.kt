@@ -18,7 +18,7 @@ class LoginRepository @Inject constructor(
       password = password
     ).mapLeft(errorMapper::map)
       .map { sessionDto ->
-        Session(accessToken = sessionDto.oauth.accessToken)
+        Session(accessToken = sessionDto.accessToken)
       }
   }
 }
