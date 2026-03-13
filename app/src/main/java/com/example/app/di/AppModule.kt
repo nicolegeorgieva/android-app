@@ -17,26 +17,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.modules.SerializersModule
-import kotlinx.serialization.modules.contextual
-import kotlin.time.ExperimentalTime
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-  @OptIn(ExperimentalTime::class)
-  @Provides
-  fun provideJson(): Json {
-    return Json {
-      ignoreUnknownKeys = true
-      isLenient = true
-      serializersModule = SerializersModule {
-        contextual(InstantSerializer)
-      }
-    }
-  }
-
   private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "app-datastore")
 
   @Provides

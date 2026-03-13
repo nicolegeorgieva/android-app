@@ -22,7 +22,10 @@ import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.util.AttributeKey
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.modules.SerializersModule
+import kotlinx.serialization.modules.contextual
 import javax.inject.Singleton
+import kotlin.time.ExperimentalTime
 import io.ktor.client.plugins.logging.Logger as KtorLogger
 
 private val AuthenticatedAttributeKey = AttributeKey<Boolean>("authenticated-attribute")
@@ -81,6 +84,18 @@ object KtorModule {
       install(KtorLogoutPlugin) {
         this.logoutUseCase = logoutUseCase
         this.mainEventBus = mainEventBus
+      }
+    }
+  }
+
+  @OptIn(ExperimentalTime::class)
+  @Provides
+  fun provideJson(): Json {
+    return Json {
+      ignoreUnknownKeys = true
+      isLenient = true
+      serializersModule = SerializersModule {
+        contextual(InstantSerializer)
       }
     }
   }
