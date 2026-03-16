@@ -1,7 +1,8 @@
-package com.example.app.di
+package com.example.app.data.ktor
 
 import com.example.app.MainEvent
 import com.example.app.MainEventBus
+import com.example.app.di.isAuthenticated
 import com.example.app.domain.LogoutUseCase
 import io.ktor.client.plugins.api.Send
 import io.ktor.client.plugins.api.createClientPlugin

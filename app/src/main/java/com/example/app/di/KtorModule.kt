@@ -2,6 +2,7 @@ package com.example.app.di
 
 import com.example.app.MainEventBus
 import com.example.app.data.datastore.SessionStorage
+import com.example.app.data.ktor.KtorLogoutPlugin
 import com.example.app.domain.LogoutUseCase
 import com.example.app.utils.Logger
 import dagger.Module
