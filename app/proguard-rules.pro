@@ -12,13 +12,19 @@
 #   public *;
 #}
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# Keep Compose-specific annotations and internal structures
+-keepclassmembers class * {
+    @androidx.compose.runtime.Composable *;
+}
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Preserve the line number information for debugging stack traces.
+-keepattributes SourceFile, LineNumberTable
+
+# Hide the original source file name.
+-renamesourcefileattribute SourceFile
+
+# Keep all data models in your networking/model package
+-keep class com.example.app.data.datasource.** { *; }
 
 # Strip standard Android Log calls
 -assumenosideeffects class android.util.Log {
