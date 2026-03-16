@@ -23,7 +23,7 @@
 # Hide the original source file name.
 -renamesourcefileattribute SourceFile
 
-# Keep all data models in your networking/model package
+# Keep all data models in your networking package
 -keep class com.example.app.data.datasource.** { *; }
 
 # Strip standard Android Log calls
