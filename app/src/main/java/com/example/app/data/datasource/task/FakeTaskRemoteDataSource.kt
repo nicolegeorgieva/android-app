@@ -31,7 +31,7 @@ class FakeTaskRemoteDataSource @Inject constructor(
         TaskDto(
           task = "3",
           title = "Buy groceries",
-          description = "Tomatoes, cucumbers, cheese",
+          description = "- Tomatoes\n- Cucumbers\n- Blueberries\n- Raspberries\n- Milk\n- Eggs\n- Cheese\n- Nuts",
           colorCode = "#000080"
         ),
       ).right()
