@@ -3,6 +3,7 @@ package com.example.app.data.datasource.login
 import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
+import com.example.app.data.datasource.model.SessionDto
 import javax.inject.Inject
 
 class FakeLoginDataSource @Inject constructor() : LoginDataSource {

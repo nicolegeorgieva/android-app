@@ -1,6 +1,6 @@
 package com.example.app.fixtures
 
-import com.example.app.data.datasource.task.TaskDto
+import com.example.app.data.datasource.model.TaskDto
 import com.example.app.data.repository.task.TaskMapper
 import com.example.app.domain.model.Task
 

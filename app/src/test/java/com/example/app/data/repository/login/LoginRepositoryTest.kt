@@ -5,7 +5,7 @@ import com.example.app.data.ErrorMapper
 import com.example.app.data.ErrorResponse
 import com.example.app.data.datasource.login.IncorrectCredentialsException
 import com.example.app.data.datasource.login.LoginDataSource
-import com.example.app.data.datasource.login.SessionDto
+import com.example.app.data.datasource.model.SessionDto
 import com.example.app.domain.model.Session
 import com.example.app.fixtures.ACCESS_TOKEN_1
 import com.example.app.fixtures.CORRECT_CREDENTIALS

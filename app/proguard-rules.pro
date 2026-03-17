@@ -12,19 +12,24 @@
 #   public *;
 #}
 
-# Keep Compose-specific annotations and internal structures
--keepclassmembers class * {
-    @androidx.compose.runtime.Composable *;
-}
-
-# Preserve the line number information for debugging stack traces.
--keepattributes SourceFile, LineNumberTable
-
-# Hide the original source file name.
+# General Android & R8 Optimization
+-keepattributes SourceFile, LineNumberTable, *Annotation*, Signature, EnclosingMethod,
+RuntimeVisibleAnnotations, AnnotationDefault
 -renamesourcefileattribute SourceFile
 
-# Keep all data models in your networking package
--keep class com.example.app.data.datasource.** { *; }
+# Jetpack Compose
+-keepclassmembers class * {
+    @androidx.compose.runtime.Composable *;
+    @androidx.compose.runtime.ReadOnlyComposable *;
+}
+
+# Ktor, Kotlin Serialization & DTOs
+-keepclassmembers class * {
+    @kotlinx.serialization.Serializable *;
+    *** Companion;
+    *** serializer(...);
+}
+-keep class com.example.app.data.datasource.model.** { *; }
 
 # Strip standard Android Log calls
 -assumenosideeffects class android.util.Log {

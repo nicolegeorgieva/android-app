@@ -1,4 +1,4 @@
-package com.example.app.data.datasource.task
+package com.example.app.data.datasource.model
 
 import kotlinx.serialization.Serializable
 

@@ -1,4 +1,4 @@
-package com.example.app.data.datasource.login
+package com.example.app.data.datasource.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
