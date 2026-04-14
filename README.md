@@ -100,21 +100,6 @@ Each screen follows the same pattern:
 - **Event**: User intents (e.g. `HomeEvent`, `LoginEvent`, `SettingsEvent`)
 - **ViewModel**: Holds state and reacts to events via `onEvent(...)`
 
-```mermaid
-flowchart TD
-  User[User] --> UiEvent["UI (Compose)\nEvent"]
-  UiEvent --> ViewModel[ComposeViewModel]
-  ViewModel --> UseCase[UseCase]
-  ViewModel --> Repository[Repository]
-  Repository --> LocalDS[LocalDataSource]
-  Repository --> RemoteDS[RemoteDataSource]
-  LocalDS --> Room[Room_DB]
-  RemoteDS --> HttpClient[Ktor_HttpClient]
-  UseCase --> DataStore[DataStore_SessionStorage]
-  DataStore --> Crypto[AES_GCM_Cryptography]
-  ViewModel --> UiState["UI (Compose)\nState"]
-```
-
 ## Networking (Ktor) setup
 
 The project provides a pre-wired `HttpClient` in [
