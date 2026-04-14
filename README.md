@@ -85,10 +85,10 @@ Any comments, feedback, or suggestions are appreciated.
 
 ```
 app/src/main/java/com/example/app/
-  data/        # datasources, repositories, mappers, persistence, networking
-  domain/      # use-cases + models
-  ui/          # screens + viewmodels + UI state/events + UI mappers
-  navigation/  # Screen definitions + Nav3 display + simple navigator
+  data/        # DataSources, Repositories, Mappers, Persistence, Networking
+  domain/      # UseCases + Models
+  ui/          # Screens + ViewModels + UI state/events + UI mappers
+  navigation/  # Screen definitions + Nav3 display + Simple navigator
   di/          # Hilt modules
 ```
 
@@ -116,7 +116,7 @@ The project provides a pre-wired `HttpClient` in [
   `KtorLogoutPlugin`](app/src/main/java/com/example/app/data/ktor/KtorLogoutPlugin.kt) logs out and
   triggers a global invalid-session event when a protected request gets `401 Unauthorized`.
 
-## Data sources included (template behavior)
+## DataSources included (template behavior)
 
 By default, the app uses **fake** implementations for demo/testing:
 
@@ -149,7 +149,7 @@ Access tokens are stored in DataStore as encrypted values:
 
 ### Unit tests
 
-Unit tests live under `app/src/test` and cover use-cases and mappers (and some repository behavior).
+Unit tests live under `app/src/test` and cover UseCases and mappers (and some repository behavior).
 
 ### Screenshot tests (Paparazzi)
 
@@ -188,7 +188,7 @@ Instrumented UI tests live under `app/src/androidTest` and are set up with:
   `app/src/main/res/values/strings.xml`](app/src/main/res/values/strings.xml)
 - **Backend base URL**: update in [
   `app/src/main/java/com/example/app/di/KtorModule.kt`](app/src/main/java/com/example/app/di/KtorModule.kt)
-- **Replace fake datasources**: swap out `FakeLoginDataSource` / `FakeTaskRemoteDataSource` bindings
+- **Replace fake DataSources**: swap out `FakeLoginDataSource` / `FakeTaskRemoteDataSource` bindings
   in [
   `app/src/main/java/com/example/app/di/AppModule.kt`](app/src/main/java/com/example/app/di/AppModule.kt)
 
