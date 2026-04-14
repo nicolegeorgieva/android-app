@@ -30,44 +30,50 @@ class CryptographyIntegrationTest {
   }
 
   @Test
-  fun encryptAndDecrypt_returnsOriginalString() = runBlocking {
-    // Given
-    val originalText = "123456"
+  fun encrypt_and_decrypt_returns_original_string() {
+    runBlocking {
+      // Given
+      val originalText = "123456"
 
-    // When
-    val encryptedBase64 = cryptography.encrypt(originalText)
-    val decryptionResult = cryptography.decrypt(encryptedBase64)
+      // When
+      val encryptedBase64 = cryptography.encrypt(originalText)
+      val decryptionResult = cryptography.decrypt(encryptedBase64)
 
-    // Then
-    expectThat(encryptedBase64).isNotEqualTo(originalText)
-    expectThat(decryptionResult).isRight(originalText)
+      // Then
+      expectThat(encryptedBase64).isNotEqualTo(originalText)
+      expectThat(decryptionResult).isRight(originalText)
+    }
   }
 
   @Test
-  fun decrypt_withInvalidData_returnsFailure() = runBlocking {
-    // Given
-    val invalidData = "NotABase64String"
+  fun decrypt_with_invalid_data_returns_failure() {
+    runBlocking {
+      // Given
+      val invalidData = "NotABase64String"
 
-    // When
-    val result = cryptography.decrypt(invalidData)
+      // When
+      val result = cryptography.decrypt(invalidData)
 
-    // Then
-    expectThat(result).isLeft()
+      // Then
+      expectThat(result).isLeft()
+    }
   }
 
   @Test
-  fun encryption_isNonDeterministic() = runBlocking {
-    // Given
-    val text = "Consistent Text"
+  fun encryption_is_non_deterministic() {
+    runBlocking {
+      // Given
+      val text = "Consistent Text"
 
-    // When
-    val firstEncryption = cryptography.encrypt(text)
-    val secondEncryption = cryptography.encrypt(text)
+      // When
+      val firstEncryption = cryptography.encrypt(text)
+      val secondEncryption = cryptography.encrypt(text)
 
-    // Then
-    expectThat(firstEncryption).isNotEqualTo(secondEncryption)
+      // Then
+      expectThat(firstEncryption).isNotEqualTo(secondEncryption)
 
-    expectThat(cryptography.decrypt(firstEncryption)).isRight(text)
-    expectThat(cryptography.decrypt(secondEncryption)).isRight(text)
+      expectThat(cryptography.decrypt(firstEncryption)).isRight(text)
+      expectThat(cryptography.decrypt(secondEncryption)).isRight(text)
+    }
   }
 }
