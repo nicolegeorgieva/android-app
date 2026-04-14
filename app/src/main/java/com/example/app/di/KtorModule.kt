@@ -60,7 +60,7 @@ object KtorModule {
       }
       install(DefaultRequest) {
         contentType(ContentType.Application.Json)
-        url(urlString = "https://api.baubuddy.de/")
+        url(urlString = "https://api.example.com/")
       }
       install(Auth) {
         bearer {

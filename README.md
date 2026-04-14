@@ -106,7 +106,7 @@ The project provides a pre-wired `HttpClient` in [
 `app/src/main/java/com/example/app/di/KtorModule.kt`](app/src/main/java/com/example/app/di/KtorModule.kt):
 
 - **Base URL**: default request URL prefix is currently set to
-  `https://api.baubuddy.de/`.\n  Update it in `KtorModule` to point to your real backend.
+  `https://api.example.com/`.\n  Update it in `KtorModule` to point to your real backend.
 - **JSON**: Kotlinx Serialization via `ContentNegotiation`.
 - **Logging**: Ktor Logging is installed; logs are routed through the app `Logger` which only prints
   in debug builds.
