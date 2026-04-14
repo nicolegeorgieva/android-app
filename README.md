@@ -110,7 +110,7 @@ The project provides a pre-wired `HttpClient` in [
 - **JSON**: Kotlinx Serialization via `ContentNegotiation`.
 - **Logging**: Ktor Logging is installed; logs are routed through the app `Logger` which only prints
   in debug builds.
-- **Auth**: Bearer auth loads access token from `SessionStorage`.\n For calls that should attach
+- **Auth**: Bearer auth loads access token from `SessionStorage`. For calls that should attach
   auth, mark the request as authenticated via `authenticated()` (see `KtorModule` helpers).
 - **Auto logout on invalid session**: [
   `KtorLogoutPlugin`](app/src/main/java/com/example/app/data/ktor/KtorLogoutPlugin.kt) logs out and
