@@ -183,7 +183,7 @@ Instrumented UI tests live under `app/src/androidTest` and are set up with:
 
 ## Configuration checklist when using this template
 
-- **Application id / namespace**: update in [`app/build.gradle.kts`](app/build.gradle.kts)
+- **Application id/namespace**: update in [`app/build.gradle.kts`](app/build.gradle.kts)
 - **App name**: update `app_name` in [
   `app/src/main/res/values/strings.xml`](app/src/main/res/values/strings.xml)
 - **Backend base URL**: update in [
