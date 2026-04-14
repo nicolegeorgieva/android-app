@@ -54,6 +54,18 @@ android {
   room {
     schemaDirectory("$projectDir/schemas")
   }
+
+  packaging {
+    resources {
+      excludes += "/META-INF/LICENSE-notice.md"
+      excludes += "/META-INF/LICENSE.md"
+      excludes += "/META-INF/LICENSE.txt"
+      excludes += "/META-INF/NOTICE"
+      excludes += "/META-INF/NOTICE.txt"
+      excludes += "/META-INF/ASL2.0"
+      excludes += "/META-INF/*.kotlin_module"
+    }
+  }
 }
 
 dependencies {
@@ -95,5 +107,6 @@ dependencies {
 
   // region Unit testing
   testImplementation(libs.bundles.unit.testing)
+  androidTestImplementation(libs.bundles.unit.testing)
   // endregion
 }
