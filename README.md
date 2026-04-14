@@ -52,7 +52,8 @@ Any comments, feedback, or suggestions are appreciated.
 ## Tech stack
 
 - **UI**: Jetpack Compose + Material 3
-- **Architecture**: MVI-style state + events per screen
+- **Architecture**: 3-layered - Data, Domain, UI
+- **Architectural pattern**: MVI
 - **Navigation**: `androidx.navigation3` (Nav3)
 - **DI**: Hilt (with KSP)
 - **Networking**: Ktor client + ContentNegotiation + Logging + Bearer auth
