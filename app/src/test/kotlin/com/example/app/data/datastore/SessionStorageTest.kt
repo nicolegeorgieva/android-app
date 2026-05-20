@@ -1,7 +1,10 @@
 package com.example.app.data.datastore
 
+import arrow.core.Either
 import com.example.app.fixtures.ACCESS_TOKEN_1
 import com.example.app.fixtures.SESSION_1
+import io.mockk.coEvery
+import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
@@ -11,7 +14,17 @@ import strikt.assertions.isNull
 
 class SessionStorageTest {
   private val dataStore = TestDataStore()
-  private val sessionStorage = SessionStorage(dataStore = dataStore)
+  private val sessionStorage = SessionStorage(
+    dataStore = dataStore,
+    cryptography = mockk {
+      coEvery { encrypt(any()) } coAnswers {
+        firstArg()
+      }
+      coEvery { decrypt(any()) } coAnswers {
+        Either.Right(firstArg())
+      }
+    }
+  )
 
   @Before
   fun setup() {

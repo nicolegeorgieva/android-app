@@ -1,5 +1,6 @@
 package com.example.app.domain
 
+import arrow.core.Either
 import com.example.app.data.datasource.task.TaskLocalDataSource
 import com.example.app.data.datastore.SessionStorage
 import com.example.app.data.datastore.TestDataStore
@@ -17,7 +18,17 @@ import strikt.assertions.isNull
 
 class LogoutUseCaseTest {
   private val dataStore = TestDataStore()
-  private val sessionStorage = SessionStorage(dataStore = dataStore)
+  private val sessionStorage = SessionStorage(
+    dataStore = dataStore,
+    cryptography = mockk {
+      coEvery { encrypt(any()) } coAnswers {
+        firstArg()
+      }
+      coEvery { decrypt(any()) } coAnswers {
+        Either.Right(firstArg())
+      }
+    }
+  )
   private val taskDataSource = mockk<TaskLocalDataSource>()
   private val logoutUseCase = LogoutUseCase(
     sessionStorage = sessionStorage,

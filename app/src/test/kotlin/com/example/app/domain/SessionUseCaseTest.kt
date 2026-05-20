@@ -19,7 +19,17 @@ import strikt.assertions.isNull
 
 class SessionUseCaseTest {
   private val dataStore = TestDataStore()
-  private val sessionStorage = SessionStorage(dataStore = dataStore)
+  private val sessionStorage = SessionStorage(
+    dataStore = dataStore,
+    cryptography = mockk {
+      coEvery { encrypt(any()) } coAnswers {
+        firstArg()
+      }
+      coEvery { decrypt(any()) } coAnswers {
+        Either.Right(firstArg())
+      }
+    }
+  )
   private val loginRepository = mockk<LoginRepository>()
 
   private val sessionUseCase = SessionUseCase(
