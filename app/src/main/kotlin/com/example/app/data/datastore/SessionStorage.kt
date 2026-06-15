@@ -1,7 +1,7 @@
 package com.example.app.data.datastore
 
 import androidx.datastore.preferences.core.edit
-import com.example.app.data.cryptography.Cryptography
+import com.example.app.data.cryptography.CryptographyImpl
 import com.example.app.di.LocalDataStore
 import com.example.app.domain.model.Session
 import kotlinx.coroutines.flow.first
@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class SessionStorage @Inject constructor(
   private val dataStore: LocalDataStore,
-  private val cryptography: Cryptography,
+  private val cryptography: CryptographyImpl,
 ) {
   suspend fun get(): Session? {
     return dataStore.data.map {
