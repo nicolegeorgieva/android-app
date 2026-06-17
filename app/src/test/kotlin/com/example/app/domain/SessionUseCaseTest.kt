@@ -2,6 +2,7 @@ package com.example.app.domain
 
 import arrow.core.Either
 import com.example.app.data.ErrorResponse
+import com.example.app.data.cryptography.FakeCryptography
 import com.example.app.data.datastore.SessionStorage
 import com.example.app.data.datastore.TestDataStore
 import com.example.app.data.repository.login.LoginError
@@ -21,14 +22,7 @@ class SessionUseCaseTest {
   private val dataStore = TestDataStore()
   private val sessionStorage = SessionStorage(
     dataStore = dataStore,
-    cryptography = mockk {
-      coEvery { encrypt(any()) } coAnswers {
-        firstArg()
-      }
-      coEvery { decrypt(any()) } coAnswers {
-        Either.Right(firstArg())
-      }
-    }
+    cryptography = FakeCryptography()
   )
   private val loginRepository = mockk<LoginRepository>()
 

@@ -1,7 +1,7 @@
 package com.example.app
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.app.data.cryptography.CryptographyImpl
+import com.example.app.data.cryptography.Cryptography
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.runBlocking
@@ -22,7 +22,7 @@ class CryptographyIntegrationTest {
   val hiltRule = HiltAndroidRule(this)
 
   @Inject
-  lateinit var cryptography: CryptographyImpl
+  lateinit var cryptography: Cryptography
 
   @Before
   fun setup() {

@@ -19,17 +19,19 @@ abstract class AppModule {
   @Binds
   abstract fun bindCryptography(cryptography: CryptographyImpl): Cryptography
 
-  @Provides
-  fun provideLoginDataSource(): LoginDataSource {
-    return FakeLoginDataSource()
-  }
+  companion object {
+    @Provides
+    fun provideLoginDataSource(): LoginDataSource {
+      return FakeLoginDataSource()
+    }
 
-  @Provides
-  fun provideTaskRemoteDataSource(
-    sessionStorage: SessionStorage,
-  ): TaskRemoteDataSource {
-    return FakeTaskRemoteDataSource(
-      sessionStorage = sessionStorage,
-    )
+    @Provides
+    fun provideTaskRemoteDataSource(
+      sessionStorage: SessionStorage,
+    ): TaskRemoteDataSource {
+      return FakeTaskRemoteDataSource(
+        sessionStorage = sessionStorage,
+      )
+    }
   }
 }
