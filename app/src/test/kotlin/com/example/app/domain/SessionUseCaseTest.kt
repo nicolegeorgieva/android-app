@@ -9,6 +9,7 @@ import com.example.app.data.repository.login.LoginError
 import com.example.app.data.repository.login.LoginRepository
 import com.example.app.fixtures.CORRECT_CREDENTIALS
 import com.example.app.fixtures.SESSION_1
+import io.mockk.clearMocks
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
@@ -34,6 +35,7 @@ class SessionUseCaseTest {
   @Before
   fun setup() {
     dataStore.clear()
+    clearMocks(loginRepository, answers = false, recordedCalls = true)
   }
 
   // region getSession()

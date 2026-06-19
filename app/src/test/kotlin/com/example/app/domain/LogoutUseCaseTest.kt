@@ -5,6 +5,7 @@ import com.example.app.data.datasource.task.TaskLocalDataSource
 import com.example.app.data.datastore.SessionStorage
 import com.example.app.data.datastore.TestDataStore
 import com.example.app.fixtures.SESSION_1
+import io.mockk.clearMocks
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.just
@@ -38,6 +39,7 @@ class LogoutUseCaseTest {
   @Before
   fun setup() {
     dataStore.clear()
+    clearMocks(taskDataSource, answers = false, recordedCalls = true)
   }
 
   @Test

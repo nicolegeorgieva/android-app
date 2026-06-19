@@ -14,6 +14,7 @@ import com.example.app.fixtures.TASK_2_DTO
 import com.example.app.fixtures.TASK_2_ENTITY
 import com.google.testing.junit.testparameterinjector.TestParameter
 import com.google.testing.junit.testparameterinjector.TestParameterInjector
+import io.mockk.clearMocks
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.just
@@ -39,6 +40,7 @@ class TaskRepositoryTest {
 
   @Before
   fun setup() {
+    clearMocks(localDataSource, remoteDataSource, answers = false, recordedCalls = true)
     repository = TaskRepository(
       localDataSource = localDataSource,
       remoteDataSource = remoteDataSource,
