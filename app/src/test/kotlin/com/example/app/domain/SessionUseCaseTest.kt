@@ -2,12 +2,14 @@ package com.example.app.domain
 
 import arrow.core.Either
 import com.example.app.data.ErrorResponse
+import com.example.app.data.cryptography.FakeCryptography
 import com.example.app.data.datastore.SessionStorage
 import com.example.app.data.datastore.TestDataStore
 import com.example.app.data.repository.login.LoginError
 import com.example.app.data.repository.login.LoginRepository
 import com.example.app.fixtures.CORRECT_CREDENTIALS
 import com.example.app.fixtures.SESSION_1
+import io.mockk.clearMocks
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
@@ -21,14 +23,7 @@ class SessionUseCaseTest {
   private val dataStore = TestDataStore()
   private val sessionStorage = SessionStorage(
     dataStore = dataStore,
-    cryptography = mockk {
-      coEvery { encrypt(any()) } coAnswers {
-        firstArg()
-      }
-      coEvery { decrypt(any()) } coAnswers {
-        Either.Right(firstArg())
-      }
-    }
+    cryptography = FakeCryptography()
   )
   private val loginRepository = mockk<LoginRepository>()
 
@@ -40,6 +35,7 @@ class SessionUseCaseTest {
   @Before
   fun setup() {
     dataStore.clear()
+    clearMocks(loginRepository, answers = false, recordedCalls = true)
   }
 
   // region getSession()

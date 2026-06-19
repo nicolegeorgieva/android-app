@@ -17,6 +17,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.example.app.domain.LogoutUseCase
 import com.example.app.domain.SessionUseCase
 import com.example.app.navigation.Navigation
 import com.example.app.navigation.Navigator
@@ -33,6 +34,9 @@ class MainActivity : ComponentActivity() {
 
   @Inject
   lateinit var sessionUseCase: SessionUseCase
+
+  @Inject
+  lateinit var logoutUseCase: LogoutUseCase
 
   @Inject
   lateinit var mainEventBus: MainEventBus
@@ -64,6 +68,7 @@ class MainActivity : ComponentActivity() {
             mainEventBus.events.collect { event ->
               when (event) {
                 MainEvent.InvalidSession -> {
+                  logoutUseCase.logout()
                   navigator.replace(listOf(Screen.Login))
                 }
               }

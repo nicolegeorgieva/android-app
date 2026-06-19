@@ -3,7 +3,6 @@ package com.example.app.di
 import com.example.app.MainEventBus
 import com.example.app.data.datastore.SessionStorage
 import com.example.app.data.ktor.KtorLogoutPlugin
-import com.example.app.domain.LogoutUseCase
 import com.example.app.utils.Logger
 import dagger.Module
 import dagger.Provides
@@ -39,7 +38,6 @@ object KtorModule {
   fun provideHttpClient(
     json: Json,
     sessionStorage: SessionStorage,
-    logoutUseCase: LogoutUseCase,
     mainEventBus: MainEventBus,
     appLogger: Logger,
   ): HttpClient {
@@ -83,7 +81,6 @@ object KtorModule {
         }
       }
       install(KtorLogoutPlugin) {
-        this.logoutUseCase = logoutUseCase
         this.mainEventBus = mainEventBus
       }
     }
