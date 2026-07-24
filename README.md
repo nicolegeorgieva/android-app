@@ -1,4 +1,4 @@
-# Android App Template (Jetpack Compose + MVI + Nav3)
+# Single-module Android App Template (Jetpack Compose + MVI + Nav3)
 
 Use this repository as a starting point for modern Android apps. It abstracts the “every app needs
 this” setup (architecture, DI, networking, persistence, testing scaffolding) so you can focus on
